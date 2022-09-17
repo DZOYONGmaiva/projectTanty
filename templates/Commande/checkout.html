@@ -1,0 +1,205 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+	<section id="cart_items">
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="#">Accueil</a></li>
+				  <li class="active">Commander</li>
+				</ol>
+			</div><!--/breadcrums-->
+
+			<div class="register-req bill-to">
+				<p>Veuillez remplir ce formulaire pour passer votre commande</p>
+			</div><!--/register-req-->
+
+			<div class="shopper-informations">
+				<div class="row">
+					<div class="col-sm-12 clearfix">
+						<div class="bill-to">
+							<p></p>
+							<div class="form-one col-sm-12">
+								<form METHOD="post">
+									{% csrf_token %}
+									<input type="hidden" id="produits" name="produits">
+									<div class="form-group col-md-6">
+										<div class="form-group col-md-6" style="padding-left: 0px;">
+											<input name="nom" id="nom" type="text" placeholder="Nom *" style="display: inline;">
+										</div>
+										<div class="form-group col-md-6" style="padding-right: 0px;">
+											<input name="email" id="email" type="email" placeholder="Email " style="display: inline;">
+										</div>
+										<select name="pays" id="pays" >
+											<option selected>Cameroun</option>
+											<option>Congo</option>
+											<option>Gabon</option>
+											<option>Guinée-Equatoriale</option>
+											<option>République Centrafricaine</option>
+											<option>République démocratique du Congo</option>
+											<option>Sao Tomé-et-Principe</option>
+											<option>Tchad</option>
+										</select>
+										<input name="ville" id="ville" type="text" placeholder="Ville *">
+										<input name="adresse" id="adresse" type="text" placeholder="Addresse ">
+										<input name="phone" id="phone" type="numder" placeholder="Numéro de téléphone *">
+										<input name="fax" id="fax" type="number" placeholder="Fax">
+										<input name="zipcode" id="zipcode" type="text" placeholder="Zip / Code Postal *">
+										<input name="total" id="total" type="hidden">
+									</div>
+									<div class="form-group col-md-6">
+										<div class="order-message">
+											<p>Envoi de la commande</p>
+											<textarea name="message" id="message" placeholder="Remarques concernant votre commande, Remarques spéciales pour la livraison" rows="16"></textarea>
+										</div>
+									</div>
+									<div class="form-group col-md-12">
+										<button type="submit" name="submit" class="btn btn-primary pull-right">Commander</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="review-payment">
+				<h2>Revoyez le panier</h2>
+			</div>
+
+			<div class="table-responsive cart_info">
+				<table class="table table-condensed">
+					<thead>
+						<tr class="cart_menu">
+							<td class="description">Produit</td>
+							<td class="price">Prix</td>
+							<td class="quantity">Quantité</td>
+							<td class="total">Total</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody id="item-table">
+
+
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</section> <!--/#cart_items-->
+
+{% endblock %}
+
+
+{% block js %}
+	<script type="text/javascript">
+		if(localStorage.getItem('panier')==null){
+			var panier = {};
+		}else{
+			panier = JSON.parse(localStorage.getItem('panier'));
+		}
+		let total = 0;
+		for(item in panier){
+			let quantite = panier[item][0];
+			let nom = panier[item][1];
+			let prix = panier[item][2];
+			let total1 = parseInt(panier[item][2]) * parseInt(panier[item][0]);
+			total += total1
+			let d = parseInt(panier[item][3]);
+			console.log(d);
+			let itemString = `<tr>
+							<td class="cart_description" >
+								<h4 style="text-align: left; padding-left: 30px;"><a href="/detail/${d}">${nom}</a></h4>
+							</td>
+							<td class="cart_price">
+								<p style="margin-top:15px;">${prix}</p>
+							</td>
+							<td class="cart_quantity">
+								<div class="cart_quantity_button">
+									<span id="${d}" class="plus cart_quantity_up" onclick="history.go(0)"> + </span>
+									<input id="qte${d}" class="cart_quantity_input" type="text" name="quantity" value="${quantite}" autocomplete="off" size="2">
+									<span id="${d}" class="moins cart_quantity_down" onclick="history.go(0)"> - </span>
+								</div>
+							</td>
+							<td class="cart_total">
+								<p class="cart_total_price" style="margin-top:15px;">${total1}</p>
+							</td>
+							<td class=" cart_delete">
+								<span id="${d}" class="sup cart_quantity_delete" onclick="history.go(0)"><i class="fa fa-times" style="margin-top:20px;"></i></span>
+							</td>
+						</tr>`
+			$('#item-table').append(itemString);
+		}
+		$(document).on('click', '.sup', function(){
+			console.log('suppr');
+			var item_id = this.id.toString();
+			console.log(item_id);
+			if(panier[item_id] != undefined){
+				panier[item_id] = undefined;
+				console.log('c');
+			}
+			console.log('a');
+			console.log(panier);
+			console.log('b');
+
+			localStorage.setItem('panier', JSON.stringify(panier));
+		});
+		$(document).on('click', '.plus', function(){
+			console.log('plus');
+			var item_id = this.id.toString();
+			console.log(item_id);
+			console.log(panier[item_id]);
+			if(panier[item_id] != undefined){
+				panier[item_id][0] = panier[item_id][0] +1;
+			}
+
+			console.log(panier);
+			console.log(panier[item_id][0]);
+			localStorage.setItem('panier', JSON.stringify(panier));
+			document.getElementById("qte${d}").innerHTML = panier[item_id][0];
+		});
+		$(document).on('click', '.moins', function(){
+			console.log('moins');
+			var item_id = this.id.toString();
+			console.log(item_id);
+			if(panier[item_id] != undefined){
+				panier[item_id][0] = panier[item_id][0] -1;
+				if(panier[item_id][0] <= 1){
+					panier[item_id][0] = 1;
+				}
+			}
+			console.log(panier);
+			localStorage.setItem('panier', JSON.stringify(panier));
+			document.getElementById("qte${d}").innerHTML = panier[item_id][0];
+		});
+		let itemString = `<tr>
+							<td colspan="3">&nbsp;</td>
+							<td colspan="2">
+								<table class="table table-condensed total-result">
+									<tr>
+										<td>Sous-total du panier</td>
+										<td>${total}</td>
+									</tr>
+									<tr>
+										<td>Exo-taxe</td>
+										<td>$2</td>
+									</tr>
+									<tr class="shipping-cost">
+										<td>Frais de port</td>
+										<td>Free</td>
+									</tr>
+									<tr>
+										<td>Total</td>
+										<td><span>${total}</span></td>
+									</tr>
+								</table>
+							</td>
+						</tr>`
+						$('#item-table').append(itemString);
+		$('#produits').val(JSON.stringify(panier));
+		$('#total').val(total);
+
+	</script>
+{% endblock %}

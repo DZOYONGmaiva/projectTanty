@@ -1,0 +1,386 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<!--<meta http-equiv="refresh" content="10">-->
+    <title>NTfoods-TANTY</title>
+
+    <link href="css/bootstrapStyle.css" rel="stylesheet">
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+    <link href="{% static 'css/price-range.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+	<link href="{% static 'css/main.css' %}" rel="stylesheet">
+	<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="{% static 'js/html5shiv.js' %}"></script>
+    <script src="{% static 'js/respond.min.js' %}"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="{% static 'images/ico/favicon.ico' %}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'images/ico/apple-touch-icon-144-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'images/ico/apple-touch-icon-114-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'images/ico/apple-touch-icon-72-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'images/ico/apple-touch-icon-57-precomposed.png' %}">
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+
+	<!--mise en forme de quelques paragraphes-->
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<!--AOS javaScript-->
+	<!--styles improvisés-->
+	<style>.nextline{
+            padding-left: 20px;
+        }
+        .bande{
+            background-color: #f9de11;
+            width: 300px;
+
+        }
+        article{
+            margin-bottom: 10px;
+        }
+		.horizontale_slider{
+            margin-top: 0px;
+            padding-top: 0px;
+            display: block;
+            width: 100%;
+
+            box-sizing: border-box;
+            padding: 20px;
+			border-top: 2px solid #f9de11;
+        }
+
+        .slider_container{
+            display: block;
+
+        }
+
+        .item .itemd{
+            display:inline;
+			grid-auto-flow: column;
+			grid-auto-columns: 50%;
+			padding: 0;
+
+        }
+        .item img{
+			inline-size: 250px;
+			aspect-ratio: 3/2;
+			object-fit: cover;
+			padding: 2px 10px 2px 0px;
+        }
+		.item video{
+			inline-size: 250px;
+			aspect-ratio: 3/2;
+			object-fit: cover;
+			padding: 2px 10px 2px 0px;
+        }
+
+
+		article{
+			text-align: center;
+			display: inline-block;
+			margin-bottom: 30px;
+		}
+		.img_propos_left{
+			width: 300px;
+			height: auto;
+			float: left;
+			margin: 5px 20px;
+			border-radius: 20px;
+		}
+		.img_propos_right{
+			width: 300px;
+			height: auto;
+			float: right;
+			margin: 5px 20px;
+			border-radius: 20px;
+		}
+		.taille_titre{
+			font-weight: bolder;
+
+		}
+		.mise_en_page{
+			color:black;
+			font-size:18px;
+		}
+		:root{
+			--color1 : rgba(235, 201, 8, 0.788);
+		}
+		.valeur_size {
+			margin-top: 30px;
+			font-size: 18px;
+			margin-left: 5px;
+		}
+		.cercle{
+			color: white;
+			background-color: var(--color1);
+			min-width: 80px;
+			min-height: 80px;
+			border-radius: 100%;
+			font-size: 25px;
+			text-align: center;
+			padding-top: 20px;
+		}
+		.barre_verte{
+			border-left: 4px solid green;
+			height: 50px;
+			margin-top: 3px;
+			padding: 0px 1px 1px 4px;
+			display: inline-block;
+		}
+		article.p{
+			font-size: 14px;
+			color:black
+		}
+
+
+        .partenaires{
+            background-color: black;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+
+        }
+        .part{
+                display:inline;
+                padding: 0;
+
+
+            }
+        .part img{
+                inline-size: 100px;
+                aspect-ratio: 20/15;
+                object-fit: cover;
+                margin:30px 50px;
+            }
+        .scroll-bg{
+            min-width: 400px;
+            min-height: 300px;
+
+        }
+        .scroll-div{
+            overflow-x: hidden;
+            overflow-y: scroll;
+            width: 100%;
+            height: 300px;
+        }
+
+
+	</style>
+
+</head><!--/head-->
+
+<body>
+	<header id="header"><!--header-->
+		<div class="header_top"><!--header_top-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="contactinfo">
+							<ul class="nav nav-pills">
+								<li><a href="#"><i class="fa fa-phone"></i> +237 6 52 85 37 73</a></li>
+								<li class="pull-right"><a href="#"><i class="fa fa-envelope"></i> info@tanty.com</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="social-icons pull-right">
+							<ul class="nav navbar-nav">
+								<li><a href="https://www.facebook.com/profile.php?id=100004692738522"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://twitter.com/NtfoodsTanty"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header_top-->
+
+		<div class="header-middle"><!--header-middle-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="logo pull-left">
+							<a href="index.html"><img src="{% static 'images/home/logo.png' %}" alt="" /></a>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="shop-menu pull-right">
+							<ul class="nav navbar-nav">
+								{% if user.is_authenticated %}
+								<li><a href="{% url 'compte' %}"><i class="fa fa-user"></i> Mon compte</a></li>
+								{% else %}
+								<li><a href="{% url 'login' %}"><i class="fa fa-lock"></i> Connexion</a></li>
+								{% endif %}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-middle-->
+		<div class="header-bottom"><!--header-bottom-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-9">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="mainmenu pull-left">
+							<ul class="nav navbar-nav collapse navbar-collapse">
+								<li><a href="{% url 'index' %}">Accueil</a></li>
+								<li class="dropdown"><a href="{% url 'shop' %}" >Acheter ici<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="{% url 'shop' %}" class="active">Produits</a></li>
+										<li><a href="{% url 'checkout' %}">Commander</a></li>
+										<li><a href="{% url 'cart' %}">Panier </a></li>
+                                    </ul>
+                                </li>
+								<li class="dropdown"><a href="{% url 'mediatheque' %}" >Médiathèque<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="{% url 'photo' %}">Photos</a></li>
+										<li><a href="{% url 'video' %}">Video</a></li>
+                                    </ul>
+                                </li>
+								<li><a href="{% url 'aPropos' %}">A propos</a></li>
+								<li class="dropdown"><a href="{% url 'carriere' %}">Carrière<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="{% url 'carriere' %}">Demande de stage</a></li>
+										<li><a href="{% url 'carriere' %}">Offres de recrutement</a></li>
+                                    </ul>
+                                </li>
+								<li><a href="{% url 'contact' %}">Contact</a></li>
+								<li><a href="{% url 'affichePartenaire' %}">Partenaire</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<form class="card card-sm">
+							<div class="search_box pull-right">
+								<div class="col">
+									<input type="search" class="padbut" name="item-name" placeholder="Rechercher"/>
+									<button type="submit"class="btn padbut">  <img src="{% static 'images/home/searchicon.png' %}" alt="" /></button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-bottom-->
+	</header><!--/header-->
+                    {% block content %}
+
+                    {% endblock %}
+<footer id="footer"><!--Footer-->
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12" style="text-align: center;">
+						<div class="companyinfo">
+							<h2><span>NT</span>foods s.a.r.l</h2>
+							<p>Grâce à vous, nous sommes N°1</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-widget">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="single-widget">
+							<h2>Navigation</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="{% url 'index' %}">Accueil</a></li>
+								<li><a href="{% url 'aPropos' %}">A propos</a></li>
+								<li><a href="{% url 'shop' %}" >Acheter ici</a></li>
+								<li><a href="{% url 'mediatheque' %}">Mediathèque</a></li>
+								<li><a href="{% url 'contact' %}">Contacts</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="single-widget">
+							<h2>Nos valeur</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">recherche et developpement</a></li>
+								<li><a href="#">professionnalisme</a></li>
+								<li><a href="#">l'écoute</a></li>
+								<li><a href="#">motivation du personnel</a></li>
+								<li><a href="#">hygiène</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="single-widget">
+							<h2>partenaires</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="{% url 'affichePartenaire' %}">Voir tous nos partenaires</a></li>
+
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+
+						<div class="single-widget">
+							<h2>Achats</h2>
+
+							<form action="#" class="searchform">
+								<input type="text" placeholder="Your email address" />
+								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+								<p>consuleter les recentes mise à jour <br />our site and be updated your self...</p>
+							</form>
+
+							<h2>Offres</h2>
+							<a href="{% url 'carriere' %}"> <button type="submit" class="btn btn-default">Stage</i></button></a>
+								<br><br>
+							<a href="{% url 'carriere' %}"> <button type="submit" class="btn btn-default">Emploi</i></button></a>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="text-center">
+					<p >Copyright © 2022 NTfoods sarl. All rights reserved. <span class="pull-right">conçu par : Momo, ZTE, pafi, maeve 	</span> </p>
+
+				</div>
+			</div>
+		</div>
+
+	</footer><!--/Footer-->
+
+
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+	<script src="{% static 'js/price-range.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+</body>
+{% block js %}
+{% endblock %}
+</html>

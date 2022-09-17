@@ -1,0 +1,92 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+						<h2>Gammes</h2>
+						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+							{% for gammes in gammes %}
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="{% url 'gamme' gammes.nom %}">{{gammes.nom}}</a></h4>
+								</div>
+							</div>
+							{% endfor %}
+						</div><!--/category-products-->
+
+					</div>
+				</div>
+
+				<div class="col-sm-9 padding-right">
+					<div class="product-details"><!--product-details-->
+						<div class="col-sm-5">
+							<div class="view-product">
+								<img src="{{ produit.image.url }}" alt="{{ produit.nom }}" />
+							</div>
+
+						</div>
+						<div class="col-sm-7">
+							<div class="product-information"><!--/product-information-->
+								<img src="{% static 'images/product-details/new.jpg' %}" class="newarrival" alt="" />
+								<h2 id="p{{ produit.id }}">{{ produit.nom }}</h2>
+								<p><b>Gamme : </b> {{ produit.gamme }}</p>
+								<span>
+									<span id="pr{{ produit.id }}" style="display: inline; color: rgb(4, 204, 74);">{{ produit.prix }}</span>
+									<button id="{{ produit.id }}" type="button" class="btn ted btn-fefault cart" onclick="alert('Produit Ajouté');">
+										<i class="fa fa-shopping-cart ted" ></i>
+										Ajouter au panier
+									</button>
+								</span>
+								<p><b>Date et heure d'ajout : </b> {{ produit.date}}</p>
+								<p><b>Description:</b>{{ produit.description }}</p>
+							</div><!--/product-information-->
+						</div>
+					</div><!--/product-details-->
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
+
+
+{% block js %}
+	<script type="text/javascript">
+		console.log('Juste pour tester');
+		if(localStorage.getItem('panier') == null){
+			var panier = {};
+		}else{
+			panier = JSON.parse(localStorage.getItem('panier'));
+		}
+		$(document).on('click', '.ted', function(){
+			console.log('ajouté');
+			var item_id = this.id.toString();
+			console.log('ajouté');
+			var i = this.id;
+			console.log(i);
+			console.log('ajouté');
+			console.log(item_id);
+			if(panier[item_id] != undefined){
+				quantite = panier[item_id][0] +1;
+				panier[item_id][0] = quantite;
+			}else{
+				quantite = 1;
+				nom = document.getElementById("p"+item_id).innerHTML;
+				prix = document.getElementById("pr"+item_id).innerHTML;
+				panier[item_id] = [quantite, nom, prix, i]
+			}
+			console.log(panier);
+			localStorage.setItem('panier', JSON.stringify(panier));
+			document.getElementById("panier").innerHTML = Object.keys(panier).length;
+			document.getElementById("pan").innerHTML = Object.keys(panier).length;
+			console.log(Object.keys(panier).length);
+		});
+	</script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 padding-right">
+					<div class="product-details" style="padding-left: 15%; padding-right: 15%;"><!--product-details-->
+						<div class="col-sm-6">
+							<div class="view-product">
+								<img src="{{ photo.photo.url }}" alt="{{ photo.description }}" />							</div>
+
+						</div>
+						<div class="col-sm-6" >
+							<div class="product-information mt-0 mb-0" style="pa; padding-top: 0px;"><!--/product-information-->
+								<p style="font-size:20px;  margin-top: 0px; padding-top: 0px;"><b><span style=" color: #f9de11; padding-top: 0%;"> Date et heure d'ajout : </span></b><h4 style="display: inline-block;"> {{ photo.date}}</h4></p>
+								<p style="font-size:20px;"><b style="color: #f9de11;">Evenement:</b> <span style="font-size:15px;"> {{ photo.evenement}}</span></p>
+								<p style="font-size:20px;"><b style="color: #f9de11;">Description:</b> <h4 style="font-size:15px;"> {{ photo.description}}</h4></p>
+							</div><!--/product-information-->
+						</div>
+					</div><!--/product-details-->
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

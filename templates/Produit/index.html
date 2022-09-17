@@ -1,0 +1,543 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Principal</title>
+
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+    <link href="{% static 'css/price-range.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+	<link href="{% static 'css/main.css' %}" rel="stylesheet">
+	<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+	<link href="{% static 'css/bootstrapStyle.css' %}" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="{% static 'js/html5shiv.js' %}"></script>
+    <script src="{% static 'js/respond.min.js' %}"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'images/ico/apple-touch-icon-144-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'images/ico/apple-touch-icon-114-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'images/ico/apple-touch-icon-72-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'images/ico/apple-touch-icon-57-precomposed.png' %}">
+	<!--mise en forme de quelques paragraphes-->
+
+
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css' %}" rel="stylesheet">
+	<!--AOS javaScript-->
+	<!--styles improvisés-->
+	<style>
+
+        .itemm{
+            display:inline-block;
+			align-items: center;
+			text-align: center;
+
+
+        }
+        .itemm img{
+			inline-size: 150px;
+			aspect-ratio: 16/16;
+			object-fit: cover;
+			padding: 2px 10px 2px 0px;
+			margin: 2px 10px;
+		}
+
+		.item1{
+			vertical-align: middle;
+
+			text-align: center;
+
+
+        }
+        .item1 img{
+			inline-size: 150px;
+			object-fit: cover;
+			margin: 2px 10px;
+		}
+
+		.child1 {
+			position: absolute;
+			width: 50px;
+			height: 200px;
+			background: rgb(39, 214, 23);
+			margin-top: 50px;
+			margin-left: 20px;
+			padding-top: 30px;
+		}
+		.child2 {
+			z-index: 1;
+			margin: 30px;
+
+			background: url("images/temoignage/myImage.png") no-repeat center/cover;
+			margin: 10px 20px;
+			width: 100px;
+			height: 100px;
+			border-radius: 100px;
+		}
+		.parent {
+			position: relative;
+			width: 400px;
+			height: 400px;
+			margin: 10px;
+		}
+		.d1{
+
+            margin: 10px 45px;
+            width: 100px;
+            height: 100px;
+            box-shadow: 0px 15px 10px -5px #777;
+            background-size: contain;
+            animation: fondu 15s ease-in-out infinite both;
+            border-radius: 20px 0px 20px 0px;
+
+        }
+        .d2{
+            width: 100%;
+            height: 0px;
+            box-shadow: 0px 0px 10px #777;
+            background-color: #EDEDED;
+            background-size: contain;
+            animation: fondu 15s ease-in-out infinite both;
+        }
+        .conteneur{
+            max-width: 200px;
+            max-height: 200px;
+        }
+        @keyframes fondu {
+            0%{background: url("{% static 'images/acceuil/img.png' %}") no-repeat center/cover;}
+            33.33%{background: url("{% static 'images/acceuil/chapelure.jpg' %}") no-repeat center/cover;}
+            66.67%{background: url("{% static 'images/acceuil/choco.png' %}") no-repeat center/cover;}
+            100%{background: url("{% static 'images/acceuil/bouillie.png' %}") no-repeat center/cover;}
+        }
+        .d1:hover, .d2:hover{
+            animation-play-state: paused;
+        }
+        .gamme{
+
+
+            padding-top: 20px 45px ;
+            box-sizing: border-box;
+            display: inline-block;
+        }
+        .bande1{
+            width: 190px;
+            height: 30px;
+            background-color: rgba(255, 255, 0, 0.822);
+            border-radius: 30px 30px 0px 0px;
+			box-sizing: border-box;
+
+			margin-top: 20px;
+        }
+        .maine{
+            background-color: rgba(9, 253, 9, 0.185);
+            width: 190px;
+            max-height: 250px;
+			display: block;
+        }
+		.titre-gamme{
+			height: 53px;
+			width: 100%;
+			font-size: 18px;
+			font-weight: bold;
+			margin-top: 5px;
+			padding: 9px 5px;
+			text-align: center;
+			box-sizing: border-box;
+		}
+
+		@font-face { font-family: Delicious; src: url('Delicious-Roman.otf'); }
+		@font-face { font-family: Delicious; font-weight: bold; src: url('Delicious-Bold.otf');}
+
+
+	</style>
+</head><!--/head-->
+
+<body>
+	<header id="header"><!--header-->
+		<div class="header_top"><!--header_top-->
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="contactinfo">
+							<ul class="nav nav-pills">
+								<li><a href="#"><i class="fa fa-phone"></i> +237 6 59 19 16 11</a></li>
+								<li class="pull-right"><a href="#"><i class="fa fa-envelope"></i> info@tanty.com</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="social-icons pull-right">
+							<ul class="nav navbar-nav">
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header_top-->
+	</header>
+
+		<div class="header-middle"><!--header-middle-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-lg-12 col-md-12">
+						<div class="text-center">
+							<h1 style="color: #c43920; font-family: Delicious;"><span>NT</span>foods<span style="color: yellow;">-</span><span style="color: rgb(4, 204, 74);">TANTY</span></h1>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-middle-->
+
+
+    <section id="slider"><!--slider-->
+		<div class="">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<div id="slider-carousel" class="carousel slide" data-ride="carousel" style="min-width: 100%;">
+
+						<div class="carousel-inner"  style="min-width: 100%;">
+							<div class="active">
+								<div class="col-sm-12 text" style="width: 100%;
+								height: 500px;
+								background-image: linear-gradient(to right, rgba(0, 0, 0, 0.774), rgba(0, 0, 0, 0.459)),url({% static 'images/propos/img_DG.jpg' %});
+								background-repeat: no-repeat, no-repeat;
+								background-position: center,  center;
+								background-size: cover, cover;">
+
+
+									<div class="header-bottom"><!--header-bottom-->
+										<div class="container">
+											<div class="row" style="border-bottom: 1px solid rgba(224, 228, 2, 0.295) ; width: 100%;">
+												<div class="col-sm-10 pt-2">
+
+													<div class="mainmenu pull-left">
+														<ul class="nav navbar-nav collapse navbar-collapse">
+															<li><a href="{% url 'index' %}" class="active">Accueil</a></li>
+															<li><a href="{% url 'shop' %}">Acheter ici<i class="fa fa-angle-down"></i></a></li>
+															<li class="dropdown"><a href="{% url 'mediatheque' %}">Médiathèque<i class="fa fa-angle-down"></i></a>
+																<ul role="menu" class="sub-menu">
+																	<li><a href="{% url 'photo' %}">Photos</a></li>
+																	<li><a href="{% url 'video' %}">Video</a></li>
+																</ul>
+															</li>
+															<li><a href="{% url 'aPropos' %}">A propos</a></li>
+															<li class="dropdown"><a href="{% url 'carriere' %}">Carrière<i class="fa fa-angle-down"></i></a>
+																<ul role="menu" class="sub-menu">
+																	<li><a href="{% url 'carriere' %}">Demande de stage</a></li>
+																	<li><a href="{% url 'carriere' %}">Offres de recrutement</a></li>
+																</ul>
+															</li>
+															<li><a href="{% url 'contact' %}">Contact</a></li>
+															<li><a href="{% url 'affichePartenaire' %}">Partenaire</a></li>
+														</ul>
+													</div>
+												</div>
+
+												<div class="col-sm-2 shop-menu pull-right " >
+													<ul class=" text-center">
+														{% if user.is_authenticated %}
+														<li><a style="max-height: 18px; text-decoration: none;" href="{% url 'compte' %}"><i class="fa fa-lock"></i> Mon compte</a></li>
+														{% else %}
+														<li><a style="max-height: 18px; text-decoration: none;" href="{% url 'login' %}"><i class="fa fa-lock"></i> Connexion</a></li>
+														{% endif %}
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div><!--/header-bottom-->
+
+									<div style="text-align: center; font-family: Delicious;">
+										<p class="text-center" style="color: yellow; margin-top:70px  ; font-size: 50px;">Bienvenu à NTfoods</p>
+										<p style="color: rgba(252, 252, 252, 0.822); font-size: 25px; margin-bottom: 20px;">Il suffit de goûter</p>
+										<a href="{% url 'shop' %}"> <button type="button" class="btn btn-outline-warning mt-5" >voir nos produits</button></a>
+									</div>
+								</div>
+							</div>
+
+
+
+
+						</div>
+
+						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+							<i class="fa fa-angle-left"></i>
+						</a>
+						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+							<i class="fa fa-angle-right"></i>
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section><!--/slider-->
+
+
+	<div class=" d-inline " style="margin-bottom: 50px;">
+		<div class="col-md-12 col-sm-12 col-lg-12  " style="display: flex; justify-content: center; align-items: center; background-color: white; padding: 4px 0px;">
+			<div class="mt-3 m-0" style="width: 100px; height: 6px; background-color: #ee710b;"  data-aos="fade-left"></div>
+			<div>
+				<h3 class="text-center mt-5 mb-5 ms-2 me-2 p-0 " data-aos="fade-down">Les Gammes</h3>
+			</div>
+			<div class="mt-3 m-0" style="width: 100px; height: 6px; background-color: #40ee0b;" data-aos="fade-right"></div>
+		</div>
+	</div>
+	<section class="d-sm-flex justify-content-between" style=" margin: 0 auto; width: 80%; padding-bottom: 30px; ">
+
+		<div class="me-5 maine" data-aos="zoom-in-up">
+			<h3 class="titre-gamme">A grignoter</h3>
+			<div class="d-flex">
+				<div class="gamme">
+					<div class="d1">
+						<div class="conteneur">
+							<div class="d2">
+
+							</div>
+						</div>
+					</div>
+					<div class="bande1"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="me-5 maine"data-aos="zoom-in-up">
+			<h3 class="titre-gamme">bouillie</h3>
+			<div class="d-flex">
+				<div class="gamme">
+					<div class="d1">
+						<div class="conteneur">
+							<div class="d2">
+
+							</div>
+						</div>
+					</div>
+					<div class="bande1"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="me-5 maine" data-aos="zoom-in-up">
+			<h3 class="titre-gamme">Ingrédients culinaires</h3>
+			<div class="d-flex">
+				<div class="gamme">
+					<div class="d1">
+						<div class="conteneur">
+							<div class="d2">
+
+							</div>
+						</div>
+					</div>
+					<div class="bande1"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="me-5 maine" data-aos="zoom-in-up">
+			<h3 class="titre-gamme">Chocolat</h3>
+			<div class="d-flex">
+				<div class="gamme">
+					<div class="d1">
+						<div class="conteneur">
+							<div class="d2">
+
+							</div>
+						</div>
+					</div>
+					<div class="bande1"></div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
+
+
+
+
+	<div class=" d-inline ">
+		<div class="col-md-12 col-sm-12 col-lg-12 p-4 " style="display: flex; justify-content: center; align-items: center; background-color: white;">
+			<div class="mt-3 me-2" style="width: 100px; height: 6px; background-color: #ee710b;" data-aos="fade-left" ></div>
+			<div data-aos="fade-down">
+				<h3 class="text-center m-0 p-0 fw-">Actualité</h3>
+			</div>
+			<div class="mt-3 ms-2" style="width: 100px; height: 6px; background-color: #40ee0b;" data-aos="fade-right"></div>
+		</div>
+	</div>
+	<section id="slider" style="background-color: yellow; display: block;"><!--slider-->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div id="slider-carousel" class="carousel slide item1" data-ride="carousel" style="padding-top: 20px;">
+
+						<div class="carousel-inner" style="padding: 10px; height: auto;">
+							<div class=" active">
+								<div class="col-sm-6 item1">
+									<h1><span>JobTalk</span></h1>
+									<h2>{{ actu.description }}</h2>
+									<p>Publié le {{ actu.date }} lors de l'évènement {{actu.evenement}}
+									</p>
+
+								</div>
+								<div class="col-sm-6 item1 ">
+									<img src="{{ actu.photo.url }}"  alt="" style="height: 300px; width:440px ; display: inline-block;;"/>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!--témoignage-->
+	<section style="margin-bottom: 20px;">
+
+	</section>
+
+
+	<section  style="margin: 20px 0px;">
+
+	<div class=" d-inline " style="margin-bottom: 50px;">
+		<div class="col-md-12 col-sm-12 col-lg-12  " style="display: flex; justify-content: center; align-items: center; background-color: white; padding: 4px 0px;">
+			<div class="mt-3 m-0" style="width: 100px; height: 6px; background-color: #ee710b;" data-aos="fade-left"></div>
+			<div>
+				<h3 class="text-center mt-5 mb-5 ms-2 me-2 p-0 fw-bold" data-aos="fade-down">Produits</h3>
+			</div>
+			<div class="mt-3 m-0" style="width: 100px; height: 6px; background-color: #40ee0b;" data-aos="fade-right"></div>
+		</div>
+	</div>
+		<div class="row col-lg-12 col-md-12 col-sm-12 justify-content-center">
+			{% for p in l %}
+			<div data-aos="zoom-in-right" class="parent shadow-lg  col-sm-4 col-md-4 col-lg-4 d-inline-block"  style=" width:400px ; height:300px; background-color: rgb(255, 255, 255); border-radius: 30px;">
+				<div class="child1">
+					<div class="child1 child2" >
+					</div>
+				</div>
+				<div class=" " style="display: inline-block; margin-left: 170px;">
+					<h3 class="fw-bold p-4" >{{ p.nom }}</h3>
+					<p class="text-justify" style=" font-size: 16px; display: inline-block;"><img src="{{ p.image.url }}" width="170px" height="170px"></p>
+				</div>
+			</div>
+			{% endfor %}
+
+		</div>
+	</section>
+
+
+
+
+
+
+	<footer id="footer" style="margin-top: 10px; display:inline-block; width: 100%;"><!--Footer-->
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12" style="text-align: center;">
+						<div class="companyinfo">
+							<h2><span>NT</span>foods s.a.r.l</h2>
+							<p>Grâce à vous, nous sommes N°1</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-widget">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="single-widget">
+							<h2>Navigation</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="{% url 'index' %}">Accueil</a></li>
+								<li><a href="{% url 'aPropos' %}">A propos</a></li>
+								<li><a href="{% url 'shop' %}" >Acheter ici</a></li>
+								<li><a href="{% url 'mediatheque' %}">Mediathèque</a></li>
+								<li><a href="{% url 'contact' %}">Contacts</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="single-widget">
+							<h2>Nos valeur</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">recherche et developpement</a></li>
+								<li><a href="#">professionnalisme</a></li>
+								<li><a href="#">l'écoute</a></li>
+								<li><a href="#">motivation du personnel</a></li>
+								<li><a href="#">hygiène</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="single-widget">
+							<h2>partenaires</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="{% url 'affichePartenaire' %}">Voir tous nos partenaires</a></li>
+
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+
+						<div class="single-widget">
+							<h2>Offres</h2>
+							<a href="{% url 'carriere' %}"> <button type="submit" class="btn btn-default">Stage</i></button></a>
+								<br><br>
+							<a href="{% url 'carriere' %}"> <button type="submit" class="btn btn-default">Emploi</i></button></a><br/>
+							<form action="#" class="searchform" style="padding-top: 4px">
+								<input type="text" placeholder="Your email address" />
+								<button type="submit" class="btn btn-default ms-1 mt-2"><i class="fa fa-arrow-circle-o-right"></i></button>
+								<p>consuleter les recentes mise à jour </p>
+							</form>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="text-center">
+					<p >Copyright © 2022 NTfoods sarl. Tous droits réservés. <span class="pull-right">conçu par : WANGA, ZRA, TOUKO, DZOYONG 	</span> </p>
+
+				</div>
+			</div>
+		</div>
+
+	</footer><!--/Footer-->
+
+
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+	<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+	<script src="{% static 'js/price-range.js' %}"></script>
+    <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+    <script src="{% static 'js/main.js"></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

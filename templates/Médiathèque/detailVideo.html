@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 padding-right">
+					<div class="product-details" style="padding-left: 15%; padding-right: 15%;"><!--product-details-->
+						<div class="col-sm-6">
+							<div class="view-product item" style="padding-top: 90px">
+								<video src="{{ video.video.url }}" controls style="padding-left: 0%";></video>
+							</div>
+
+						</div>
+						<div class="col-sm-6" >
+							<div class="product-information mt-0" style="pa"><!--/product-information-->
+								<p style="font-size:20px; "><b><span style=" color: #f9de11; padding-top: 0%;"> Date et heure d'ajout : </span></b><h4 style="display: inline-block;"> {{ video.date}}</h4></p>
+								<p style="font-size:20px;"><b style="color: #f9de11;">Evenement:</b> <span style="font-size:15px;"> {{ video.evenement}}</span></p>
+								<p style="font-size:20px;"><b style="color: #f9de11;">Description:</b> <h4 style="font-size:15px;"> {{ video.description}}</h4></p>
+							</div><!--/product-information-->
+						</div>
+					</div><!--/product-details-->
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

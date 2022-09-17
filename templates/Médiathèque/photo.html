@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+	<!--les photos-->
+	<section class="container col">
+        <h2 class="text-center" style="color: rgb(204, 4, 4);">PHOTOS</h2>
+        <article >
+            {% for l1 in l1 %}
+            <div class="container " style="box-sizing:border-box;">
+                <div class="bande text-center" style="display: inline-block;">
+                    {{ l1.nom }} <br>
+                    <span class="nextline">{{ l1.date }}</span>
+                </div>
+            </div>
+
+            <div class="horizontale_slider">
+                <div class="slider_container">
+                        {% for photos in photos %}
+                            {% if photos.evenement == l1 %}
+                                <div class="item" style="display:inline-block;">
+                                    <a href="{% url 'detailPhoto' photos.id %}"><img src="{{ photos.photo.url }}" alt="{{ photos.description }}"></a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </article>
+	</section>
+
+{% endblock %}

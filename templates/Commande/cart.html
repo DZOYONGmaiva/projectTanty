@@ -1,0 +1,122 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+	<section id="cart_items">
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="#">Accueil</a></li>
+				  <li class="active">Panier</li>
+				</ol>
+			</div>
+			<div class="table-responsive cart_info">
+				<table class="table table-condensed">
+					<thead>
+						<tr class="cart_menu">
+							<td class="description">Produit</td>
+							<td class="price">Prix</td>
+							<td class="quantity">Quantité</td>
+							<td class="total">Total</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody id="item-table">
+
+					</tbody>
+				</table>
+				<div class="form-group col-md-12">
+					<a href="{% url 'checkout' %}"><button type="submit" name="submit" class="btn btn-primary pull-right">Commander</button></a>
+				</div>
+
+			</div>
+		</div>
+	</section> <!--/#cart_items-->
+
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript">
+		if(localStorage.getItem('panier')==null){
+			var panier = {};
+		}else{
+			panier = JSON.parse(localStorage.getItem('panier'));
+		}
+		for(item in panier){
+			let quantite = panier[item][0];
+			let nom = panier[item][1];
+			let prix = panier[item][2];
+			let total = parseInt(panier[item][2]) * parseInt(panier[item][0]);
+			let d = parseInt(panier[item][3]);
+			console.log(d);
+			let itemString = `<tr>
+							<td class="cart_description" >
+								<h4 style="text-align: left; padding-left: 30px;"><a href="/detail/${d}">${nom}</a></h4>
+							</td>
+							<td class="cart_price">
+								<p style="margin-top:15px;">${prix}</p>
+							</td>
+							<td class="cart_quantity">
+								<div class="cart_quantity_button">
+									<span id="${d}" class="plus cart_quantity_up" onclick="history.go(0)"> + </span>
+									<input class="cart_quantity_input" type="text" name="quantity" value="${quantite}" autocomplete="off" size="2">
+									<span id="${d}" class="moins cart_quantity_down" onclick="history.go(0)"> - </span>
+								</div>
+							</td>
+							<td class="cart_total">
+								<p class="cart_total_price" style="margin-top:15px;">${total}</p>
+							</td>
+							<td class=" cart_delete">
+								<span id="${d}" class="sup cart_quantity_delete" onclick="history.go(0)"><i class="fa fa-times" style="margin-top:20px;"></i></span>
+							</td>
+						</tr>`
+			$('#item-table').append(itemString);
+		}
+		$(document).on('click', '.sup', function(){
+			console.log('suppr');
+			var item_id = this.id.toString();
+			console.log(item_id);
+			if(panier[item_id] != undefined){
+				panier[item_id] = undefined;
+				console.log('c');
+			}
+			console.log('a');
+			console.log(panier);
+			console.log('b');
+
+			localStorage.setItem('panier', JSON.stringify(panier));
+		});
+		$(document).on('click', '.plus', function(){
+			console.log('plus');
+			var item_id = this.id.toString();
+			console.log(item_id);
+			console.log(panier[item_id]);
+			if(panier[item_id] != undefined){
+				panier[item_id][0] = panier[item_id][0] +1;
+			}
+
+			console.log(panier);
+			console.log(panier[item_id][0]);
+			localStorage.setItem('panier', JSON.stringify(panier));
+			document.getElementById('qte').setAttribute('value', panier[item_id][0]);
+			location.reload();
+		});
+		$(document).on('click', '.moins', function(){
+			console.log('moins');
+			var item_id = this.id.toString();
+			console.log(item_id);
+			if(panier[item_id] != undefined){
+				panier[item_id][0] = panier[item_id][0] -1;
+				if(panier[item_id][0] <= 1){
+					panier[item_id][0] = 1;
+				}
+			}
+			console.log(panier);
+			localStorage.setItem('panier', JSON.stringify(panier));
+			document.getElementById('qte').setAttribute('value', panier[item_id][0]);
+			location.reload();
+		});
+
+	</script>
+{% endblock %}

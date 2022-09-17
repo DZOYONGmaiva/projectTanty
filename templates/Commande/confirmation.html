@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<section id="cart_items">
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="#">Accueil</a></li>
+				  <li class="active">Commander</li>
+				</ol>
+			</div><!--/breadcrums-->
+			<div class="register-req bill-to" style="background: #f9de11">
+				<p style="display: inline;">Salut M./Mme <h2 style="display: inline; color: rgb(4, 204, 74);" class="productinfo">{{ info.nom }}</h2></p>
+			</div><!--/register-req-->
+			<div class="order-message">
+				<p>Merci d'avoir choisi NTFOODS pour vos achats. Nous avons recu votre commande, vous seriez livrez dans un delai de 1 jour</p>
+			</div>
+		</div>
+	</section> <!--/#cart_items-->
+
+
+{% endblock %}

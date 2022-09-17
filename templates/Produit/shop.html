@@ -1,0 +1,137 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+						<h2>Gammes</h2>
+						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+							{% for gammes in gammes %}
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="{% url 'gamme' gammes.nom %}">{{gammes.nom}}</a></h4>
+								</div>
+							</div>
+							{% endfor %}
+
+						</div><!--/category-products-->
+
+
+
+						<div class="price-range"><!--price-range-->
+							<h2>Price Range</h2>
+							<div class="well text-center">
+								<input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+								<b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+							</div>
+						</div><!--/price-range-->
+
+					</div>
+				</div>
+
+				<div class="col-sm-9 padding-right">
+					<div class="features_items"><!--features_items-->
+						<h2 class="title text-center">Nos produits</h2>
+						{% for produits in produits %}
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<div id="i{{ produits.id }}"><img  src="{{ produits.image.url }}" alt="{{ produits.nom }}" /></div>
+										<h2 id="pr{{ produits.id }}">{{ produits.prix }}</h2>
+										<p id="p{{ produits.id }}">{{ produits.nom }}</p>
+										<button class="btn ted btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Ajouter au pannier</button>
+									</div>
+									<div class="product-overlay">
+										<div class="overlay-content">
+											<h2>{{ produits.prix }}</h2>
+											<p>{{ produits.nom }}</p>
+											<button id="{{ produits.id }}" class="btn ted btn-default add-to-cart" onclick="alert('Produit Ajouté');"><i class="fa fa-shopping-cart"></i>Ajouter au pannier</button>
+										</div>
+									</div>
+								</div>
+								<div class="choose">
+									<ul class="nav nav-pills nav-justified">
+										<li><a id="d" href="{% url 'detail' produits.id %}"><i class="fa fa-plus-square"></i>Voir détail</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<div class="row mt-3">
+						<div class="col-md-3 offset-md-4 ">
+							<ul class="pagination">
+								{% if produits.has_previous %}
+									<li class="page-item">
+										<a href="?page={{produits.previous_page_number}}"><<</a>
+									</li>
+								{% endif %}
+									<li class="page-item active"><a href="?page={{ produits.number}}">{{ produits.number }}</a></li>
+								{% if produits.has_next %}
+									<li class="page-item">
+										<a href="?page={{produits.next_page_number}}">>></a>
+									</li>
+								{% endif %}
+							</ul>
+						</div>
+					</div><!--features_items-->
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript">
+		console.log('Juste pour tester');
+		if(localStorage.getItem('panier') == null){
+			var panier = {};
+		}else{
+			panier = JSON.parse(localStorage.getItem('panier'));
+		}
+		$(document).on('click', '.ted', function(){
+			console.log('ajouté');
+			var item_id = this.id.toString();
+			console.log('ajouté');
+			var i = this.id;
+			console.log(i);
+			console.log('ajouté');
+			console.log(item_id);
+			if(panier[item_id] != undefined){
+				quantite = panier[item_id][0] +1;
+				panier[item_id][0] = quantite;
+			}else{
+				quantite = 1;
+				nom = document.getElementById("p"+item_id).innerHTML;
+				prix = document.getElementById("pr"+item_id).innerHTML;
+				image = document.getElementById("i"+item_id).innerHTML;
+				panier[item_id] = [quantite, nom, prix, i]
+			}
+			console.log(panier);
+			localStorage.setItem('panier', JSON.stringify(panier));
+			document.getElementById("panier").innerHTML = Object.keys(panier).length;
+			document.getElementById("pan").innerHTML = Object.keys(panier).length;
+			console.log(Object.keys(panier).length);
+		});
+		AfficherListe(panier)
+		function AfficherListe(panier){
+			var panierString = "";
+			panierString += "<h4 style='color: #f9de11;'>Vos produits</h4>";
+			var index = 1;
+			for(var x in panier){
+				panierString += index;
+				panierString += " ";
+				panierString += document.getElementById("p"+x).innerHTML +" ("+ panier[x][0] +")</br>";
+				index += 1;
+			}
+			panierString += "<a href='{% url 'cart' %}' style='color: rgb(4, 204, 74);'>Voir plus</a>"
+			$('[data-toggle="popover"]').popover();
+			document.getElementById('panbut').setAttribute('data-content', panierString);
+		}
+	</script>
+{% endblock %}

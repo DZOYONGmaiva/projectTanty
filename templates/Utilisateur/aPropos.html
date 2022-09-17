@@ -1,0 +1,141 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+	<section>
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="#">Accueil</a></li>
+				  <li class="active">A propos</li>
+				</ol>
+			</div><!--/breadcrums-->
+
+			<!--/présentation de NTfoods/ bref mot du directeur-->
+			<div class="row " style="text-align: center;">
+				<article class="col-sm-10 col-sm-offset-1" style="text-align: center; display: inline-block;">
+					<h3 class="text-center taille_titre" data-aos="zoom-in">NTfoods</h3><br>
+
+					<p  data-aos="zoom-in-down"style="font-size: 18px; width: 100%; display: inline-block; text-align: justify;"><img class="img_propos_left" src="{% static 'images/propos/img_DG.jpg' %}" alt="">
+						 NTfoods est une entreprise camerounaise qui propose des solutions concrètes pour une bonne alimentation au Cameroun
+						et en Afrique, et qui met en avant le « Made in Cameroon ». Située à Yaoundé, Messamendongo, elle offre ses services
+						dans le domaine de l'agroalimentaire. NTfoods est une société à responsabilité limitée (SARL).
+						</p>
+				</article>
+
+			</div><br><br>
+
+			<article class="col-sm-10 col-sm-offset-1">
+				<h3 class="text-center taille_titre" data-aos="zoom-in">Historique</h3><br>
+
+				<p data-aos="zoom-in-down" style="font-size: 18px; width: 100%; display: inline-block; text-align: justify;"><img class="img_propos_right" src="{% static 'images/propos/img_DG.jpg' %}" alt="">
+					L’entreprise NTfoods a été créée en 2010, et ses produits (TANTY) par contre sont nés environ dix ans avant sa création.
+					TANTY est née suite aux besoins du promoteur de consommer la pâte d’arachide depuis l’hexagone. L’idée lui vient de monter
+					une machine de fabrication de poudre d’arachide facile à conserver pendant une longue durée, et extraire de l’huile d’arachide.
+					Ces produits sont validés par le centre pasteur en 2000. La marque TANTY, séduisant entre temps de remarquables et nombreux
+					consommateurs, se voit récompensée par le chef de l’Etat camerounais (palme d’or de meilleurs projets agroalimentaires) en 2003.
+					En 2004, elle reçoit le prix de l’excellence locale Guiness. Elle reçoit en 2006 le prix de l’entreprise citoyenne de l’année, et
+					en 2021 NTfoods reçoit le prix de la meilleure entreprise agroalimentaire au Cameroun. </p>
+			</article>
+
+
+
+			<!--/Nos valeurs-->
+
+			<div class="col-md-12">
+				<h3 class="text-center taille_titre" data-aos="zoom-in">Nos valeurs</h3><br>
+			</div>
+			<div class="row" style="display: flex; min-width: 730px">
+
+
+				<div class="col-sm-5 col-md-5" style="padding-left: 70px; ;">
+					<div style=" margin-bottom: 10px;"  data-aos="zoom-out-right">
+						<div style="display: flex ;">
+							<div class = "cercle">1</div>
+							<div style="background-color:var(--color1);  width: 40px; height: 2px; margin-top: 40px;"></div>
+							<p class="valeur_size">Inovation</p>
+
+						</div>
+					</div>
+
+					<div style=" margin-bottom: 10px;" data-aos="zoom-out-right">
+						<div style="display: flex ;">
+							<div class = "cercle">2</div>
+							<div style="background-color:var(--color1);  width: 40px; height: 2px; margin-top: 40px;"></div>
+							<p class="valeur_size">Professionnalisme</p>
+						</div>
+					</div>
+
+					<div style=" margin-bottom: 10px;" data-aos="zoom-out-right">
+						<div style="display: flex ;">
+							<div class = "cercle">3</div>
+							<div style="background-color:var(--color1);  width: 40px; height: 2px; margin-top: 40px;"></div>
+							<p class="valeur_size">Esprit d'équipe</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-5 col-md-5" style="padding-left: 70px; " >
+					<div style=" margin-bottom: 10px;" data-aos="zoom-out-left">
+						<div style="display: flex ;">
+							<div class = "cercle">4</div>
+							<div style="background-color:var(--color1);  width: 40px; height: 2px; margin-top: 40px;"></div>
+							<p class="valeur_size">l'Intégrité</p>
+						</div>
+					</div>
+
+					<div style=" margin-bottom: 10px;" data-aos="zoom-out-left">
+						<div style="display: flex ;">
+							<div class = "cercle">5</div>
+							<div style="background-color:var(--color1);  width: 40px; height: 2px; margin-top: 40px;"></div>
+							<p class="valeur_size">Les valeurs de NTfoods</p>
+						</div>
+					</div>
+
+					<div style=" margin-bottom: 10px;" data-aos="zoom-out-left">
+						<div style="display: flex ;">
+							<div class = "cercle">6</div>
+							<div style="background-color:var(--color1);  width: 40px; height: 2px; margin-top: 40px;"></div>
+							<p class="valeur_size">Satisfaction du client</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<article class="col-sm-10 col-sm-offset-1">
+				<h3 class="text-center taille_titre"data-aos="zoom-in">Notre vision</h3><br>
+				<p data-aos="zoom-in-down" style="font-size: 18px;  width: 100%; display: inline-block; text-align: justify;"><img style="width: auto; height: 300px;float: right; margin: 1px 52px; border-radius: 20px;" src="{% static 'images/propos/001.jpg' %}" alt="" >
+					NTFOODS S.A.R.L est une entreprise agroalimentaire spécialisée dans la transformation des produits agricoles locaux:
+					maïs, soja, arachide etc... afin de  promouvoir le  « made in Cameroon ».Nous avons connu depuis plus de 20 ans un essor
+					remarquable grâce à l'apport et au précieux soutien de nombreuses personnes et entreprises, qui ont participées de manière
+					enthousiaste à notre projet. Chacun dans son domaine de compétence ou sa spécificité a contribué à ce qu'est NTFoods S.A.R.L
+					soit ce qu'elle est aujourd'hui. Nous avons l'ambition de devenir l'une des meilleures entreprises agro-alimentaires de
+					l'Afrique Centrale d'où notre vision : <i>"Etre le leader et une référence dans l'Agro-alimentaire en Afrique Centrale."</i>.
+				</p>
+			</article>
+			<article class="col-sm-10 col-sm-offset-1">
+				<h3 class="text-center taille_titre"data-aos="zoom-in">Notre Mission</h3><br>
+				<p data-aos="zoom-in-down" style="font-size: 18px;  width: 100%; display: inline-block; text-align: justify;"><img style="width: auto; height: 300px;float: right; margin: 1px 52px; border-radius: 20px;" src="{% static 'images/propos/001.jpg' %}" alt="" >
+					Notre mission est celle de <i>"Garantir aux consommateurs des produits alimentaires de qualité dans le
+						strict respect des normes et des standards d'hygiène et de biosécurité"</i>.
+				</p>
+			</article>
+
+
+
+
+			<!--/Notre Vision
+
+			<div class="">
+				<h4 class="text-center mise_en_page" style="margin-bottom: 50px; font-weight: bold; color: rgb(8, 214, 70);" data-aos="zoom-in" >Notre Vision</h4>
+				<p>
+
+					 Chacun dans son domaine de compétence ou sa spécificité a contribué à ce qu'est NTFoods S.A.R.L
+					 aujourd'hui.Nous avons l'ambition de devenir d'ici 2020 l'une des meilleures entreprises
+					 agro-alimentaires de l'Afrique Centrale grâce à notre taux de progression rapide qui s'élève aujourd'hui à 20%
+				</p>
+			</div>-->
+		</div>
+	</section>
+
+{% endblock %}

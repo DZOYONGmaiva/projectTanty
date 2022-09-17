@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+	<section id="cart_items">
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="#">Accueil</a></li>
+				  <li class="active">Carrière</li>
+				</ol>
+			</div><!--/breadcrums-->
+
+			<div class="register-req bill-to" style="text-align: center; color: rgb(4, 204, 74);">
+				<p style="color: rgb(4, 204, 74);">Poursuivez votre carrière chez NTfoods</p>
+			</div><!--/register-req-->
+
+			<div class="shopper-informations">
+				<div class="row">
+					<div class="col-sm-12 clearfix">
+						<div class="bill-to">
+							<p></p>
+							<div class="form-one col-sm-12">
+								<p style="padding-left: 15px; padding-right: 15px; text-align: justify;">Travailler à NTFOODS c’est travailler dans l’entreprise industrielle et commerciale 100 % Camerounaise. Nous produisons les bouillies de soja TANTY et l’huile d’arachide vierge extra de la même marque dans notre propre unité de production industrielle située à Yaoundé. Nous commercialisons ces produits à travers plus de 1500 points de ventes (Grossistes, Supermarchés, pharmacies et vitrines, boutiques…) et 04 agences commerciales dans le pays. Plusieurs distinctions en 10 ans (1er Prix au salon de création d’entreprise, Etoile d’or du marketing et de la communication, Oscar d’or du produit alimentaire, Meilleure entreprise citoyenne de la décennie etc…)</p>
+								<p style="padding-left: 60px;">Vous pensez pouvoir contribuer à la matérialisation de notre vision?</p>
+								<p style="padding-left: 60px;">Vous êtes certain(e) d'en avoir les capacités humaines, intellectuelles?</p>
+								<p style="padding-left: 60px;">Afin que votre candidature spontanée puisse être prise en compte, remplissez le formulaire ci-dessous.</p>
+								<p style="padding-left: 60px;">Il n'est pas nécessaire d'enregistrer plusieurs fois votre CV dans notre base de données.</p>
+							</div>
+							<p style="padding-left: 28px;">Télécharger la fiche de renseignement pour vos dossiers</p>
+							<div class="chose_area" style="text-align: center; justify-content: center">
+										<a class="btn btn-default check_out" href="{% static 'images/emploi.docx' %}" style="margin-bottom: 5%; ">Emploi</a>
+										<a class="btn btn-default update" href="{% static 'images/emploi.docx' %}" style="margin-bottom: 5%; ">Stage</a>
+									</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section> <!--/#cart_items-->
+
+{% endblock %}

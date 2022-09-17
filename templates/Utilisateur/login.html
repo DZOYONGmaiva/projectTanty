@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+	<section id="form"><!--form-->
+		<div class="container">
+			<div class="row">
+				{% if messages %}
+						{% for message in messages %}
+					<div class="alert alert-danger text-center"><strong>{{ message }}</strong></div>
+						{% endfor %}
+
+					{% endif %}
+				<div class="col-sm-4 col-sm-offset-1">
+
+					<div class="login-form"><!--login form-->
+						<h2>Connexion A Votre Compte</h2>
+						<form method="POST" action="{% url 'login' %}">
+							{% csrf_token %}
+							<input type="text" id="username1" placeholder="Nom d'Utilisateur" name="username"/>
+							<input type="password" placeholder="Mot De Passe" id="password1" name="password"/>
+							<span>
+								<input type="checkbox" class="checkbox">
+								Se souvenir de moi
+							</span>
+							<button type="submit" class="btn btn-default">Connexion</button>
+						</form>
+					</div><!--/login form-->
+				</div>
+				<div class="col-sm-1">
+					<h2 class="or">OU</h2>
+				</div>
+				<div class="col-sm-4">
+					<div class="signup-form"><!--sign up form-->
+						<h2>Nouvel Utilisateur? Inscription!</h2>
+						<form method="POST" action="{% url 'signup' %}">
+							{% csrf_token %}
+							<input type="text" placeholder="Nom" id="nom" name="nom"/>
+							<input type="text" placeholder="Prénom" id="prenom" name="prenom"/>
+							<input type="text" placeholder="Nom d'Utilisateur" id="username2" name="username"/>
+							<input type="email" placeholder="Addresse Email" id="email" name="email"/>
+							<input type="password" placeholder="Mot De Passe" id="password2" name="password"/>
+							<button type="submit" class="btn btn-default">Inscription</button>
+						</form>
+					</div><!--/sign up form-->
+				</div>
+			</div>
+		</div>
+	</section><!--/form-->
+
+{% endblock %}

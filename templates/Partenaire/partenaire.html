@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+	<section style="margin: 40px 100px 40px 40px;" class=" text-justify offset-2">
+		<div class="container border shadow ">
+			<div class="row "></div>
+            <div class="col-sm-6 pt-5" style=" max-width: 100%;">
+                <h3 style="text-transform: uppercase; color: #f9de11; text-align: center" class="mb-5 fw-bold">Nous travaillons avec les meilleurs Partenaires</h3>
+                <p class="text-justify " style="font-size: 18px; ">Bien que nous soyons à l'avant-garde et
+                    que nous nous spécialisions dans le secteur agro-alimentaire,
+                     nous connaissonsassez-bien un certain nombre de méthodesde production
+                     et de livraison et sommes convaincus que nous pouvons trouver
+                     le processus qui vous aidera le mieux à atteindre vos objectifs.
+                </p>
+            </div>
+
+            <div class="col-sm-6 scroll-bg text-center" style="display: inline-block; box-sizing: border-box;">
+                <div class="scroll-div">
+                    <div class="scroll-object">
+                        {% for partenaires in partenaires %}
+                        <div class="part">
+                            <a href="{{ partenaires.lien }}" class="btn btn-default add-to-cart"><img src="{{ partenaires.image.url }}" alt="{{ partenaires.nom }}"></a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+		</div>
+
+	</section>
+
+{% endblock %}

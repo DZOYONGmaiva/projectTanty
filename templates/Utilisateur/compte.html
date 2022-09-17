@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+	<section id="cart_items">
+		<div class="container">
+
+				<div class="breadcrumbs">
+					<ol class="breadcrumb">
+					  <li><a href="{% url 'index' %}">Accueil</a></li>
+					  <li class="active">Mon Compte</li>
+					</ol>
+				</div><!--/breadcrums-->
+				<div class="register-req bill-to" style="background: rgb(4, 204, 74)">
+					<p style="display: inline; color: #fff; margin-left:3em"><b>Bienvenue M./Mme</b><h3 style="display: inline; color: rgb(204, 4, 4);" class="productinfo"> {{ request.user.last_name }} {{ request.user.first_name }}</h3></p>
+				</div><!--/register-req-->
+				<div class="shopper-informations">
+					<div class="row">
+						<div class="col-sm-12 clearfix ">
+							<div class="bill-to" style="padding-left: 10%; padding-right: 10%;">
+								<div class="form-one col-sm-12 compte " style="padding-left: 10%; padding-right: 10%; border:none; text-align:center">
+										<p style="margin-top:1em">Nom : <b>{{ request.user.first_name }}</b></p>
+									<p style="margin-top:1em" >Prénom :<b>{{ request.user.last_name }}</b></p>
+										<p style="margin-top:1em" >Nom d'utilisateur :<b>{{ request.user.username }}</b> </p>
+									<p style="margin-top:1em" >Email : <b>{{ request.user.email }}</b></p>
+									<div class="chose_area">
+										<a class="btn btn-default check_out" href="{% url 'logout' %}" style="margin-bottom: 5%; float: left;">Déconnexion</a>
+										<a class="btn btn-default update" href="{% url 'modifCompte' %}" style="margin-bottom: 5%; float: right;">Modifier son compte</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+	</section> <!--/#cart_items-->
+
+
+{% endblock %}

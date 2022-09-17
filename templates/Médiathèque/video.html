@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<!--les videos-->
+	<section class="container col">
+        <h2 class="text-center" style="color: rgb(204, 4, 4);">VIDEOS</h2>
+        <article >
+            {% for l2 in l2 %}
+
+            <div class="container " style="box-sizing:border-box;">
+                <div class="bande text-center" style="display: inline-block;">
+                    {{ l2.nom }} <br>
+                    <span class="nextline">{{ l2.date }}</span>
+                </div>
+            </div>
+            <div class="horizontale_slider">
+                <div class="slider_container">
+                    {% for videos in videos %}
+                        {% if videos.evenement == l2 %}
+                                <div class="item" style="display:inline-block;">
+                                <a href="{% url 'detailVideo' videos.id %}" ><video src="{{ videos.video.url }}" controls></video></a>
+                                <div class="choose">
+									<ul class="nav nav-pills nav-justified">
+										<li><a id="d" href="{% url 'detailVideo' videos.id %}"><i class="fa fa-plus-square"></i>Voir détail</a></li>
+									</ul>
+								</div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+            </div>
+            {% endfor %}
+        </article>
+
+	</section>
+
+{% endblock %}
